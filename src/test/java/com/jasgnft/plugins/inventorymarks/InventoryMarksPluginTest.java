@@ -1,13 +1,13 @@
-package com.example;
+package com.jasgnft.plugins.inventorymarks;
 
 import net.runelite.client.RuneLite;
 import net.runelite.client.externalplugins.ExternalPluginManager;
 
-public class ExamplePluginTest
+public class InventoryMarksPluginTest
 {
 	public static void main(String[] args) throws Exception
 	{
-		ExternalPluginManager.loadBuiltin(ExamplePlugin.class);
+		ExternalPluginManager.loadBuiltin(InventoryMarksPlugin.class);
 		RuneLite.main(args);
 	}
 }

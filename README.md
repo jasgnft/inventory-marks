@@ -1,2 +1,2 @@
-# Example
-An example greeter plugin
+# Inventory Marks
+Puts marks on the inventory items
