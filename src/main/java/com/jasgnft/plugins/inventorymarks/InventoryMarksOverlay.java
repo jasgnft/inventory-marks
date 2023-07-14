@@ -2,18 +2,16 @@ package com.jasgnft.plugins.inventorymarks;
 
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
-import java.awt.Color;
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.Rectangle;
-import java.awt.image.BufferedImage;
-import javax.inject.Inject;
 import net.runelite.api.widgets.WidgetID;
 import net.runelite.api.widgets.WidgetItem;
 import net.runelite.client.game.ItemManager;
 import net.runelite.client.ui.overlay.WidgetItemOverlay;
 import net.runelite.client.util.ColorUtil;
 import net.runelite.client.util.ImageUtil;
+
+import javax.inject.Inject;
+import java.awt.*;
+import java.awt.image.BufferedImage;
 
 import static com.jasgnft.plugins.inventorymarks.util.OverlayUtil.squareDraw;
 

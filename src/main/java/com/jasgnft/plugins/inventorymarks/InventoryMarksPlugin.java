@@ -2,12 +2,8 @@ package com.jasgnft.plugins.inventorymarks;
 
 import com.google.gson.Gson;
 import com.google.inject.Provides;
-import javax.inject.Inject;
-import javax.swing.*;
-
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.*;
-import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.MenuOpened;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetID;
@@ -22,6 +18,8 @@ import net.runelite.client.ui.components.colorpicker.RuneliteColorPicker;
 import net.runelite.client.ui.overlay.OverlayManager;
 import net.runelite.client.util.ColorUtil;
 
+import javax.inject.Inject;
+import javax.swing.*;
 import java.applet.Applet;
 import java.awt.*;
 import java.util.ArrayList;
