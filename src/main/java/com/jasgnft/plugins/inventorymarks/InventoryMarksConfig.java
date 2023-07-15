@@ -107,12 +107,28 @@ public interface InventoryMarksConfig extends Config
 		return false;
 	}
 
+	enum MShape {
+		SCUARE,
+		CIRCLE,
+	}
+
+	@ConfigItem(
+			position = 1,
+			keyName = "markshape",
+			name = "Mark shape",
+			description = "Shape of the mark",
+			section = markOptionSection
+	)
+	default MShape markShape(){
+		return MShape.SCUARE;
+	}
+
 	@Range(
 			min = 2,
 			max = 20
 	)
 	@ConfigItem(
-			position = 1,
+			position = 2,
 			keyName = "marksize",
 			name = "Mark size",
 			description = "Change the size of the mark",
@@ -124,7 +140,7 @@ public interface InventoryMarksConfig extends Config
 	}
 
 	@ConfigItem(
-			position = 2,
+			position = 3,
 			keyName = "showTagOutline",
 			name = "Outline",
 			description = "Configures whether or not item tags show be outlined",
@@ -136,7 +152,7 @@ public interface InventoryMarksConfig extends Config
 	}
 
 	@ConfigItem(
-			position = 3,
+			position = 4,
 			keyName = "tagFill",
 			name = "Fill",
 			description = "Configures whether or not item tags should be filled",
@@ -151,7 +167,7 @@ public interface InventoryMarksConfig extends Config
 			max = 255
 	)
 	@ConfigItem(
-			position = 4,
+			position = 5,
 			keyName = "fillOpacity",
 			name = "Fill opacity",
 			description = "Configures the opacity of the tag \"Fill\"",

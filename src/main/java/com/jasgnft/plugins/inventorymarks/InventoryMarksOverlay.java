@@ -14,6 +14,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 import static com.jasgnft.plugins.inventorymarks.util.OverlayUtil.squareDraw;
+import static com.jasgnft.plugins.inventorymarks.util.OverlayUtil.circleDraw;
 
 public class InventoryMarksOverlay extends WidgetItemOverlay {
 
@@ -56,7 +57,13 @@ public class InventoryMarksOverlay extends WidgetItemOverlay {
 
         Rectangle bounds = widgetItem.getCanvasBounds();
         if (config.showMark()){
-            squareDraw(graphics, color, bounds.getCenterX(), bounds.getCenterY(), config.markSize());
+            if (config.markShape() == InventoryMarksConfig.MShape.SCUARE){
+                squareDraw(graphics, color, bounds.getCenterX(), bounds.getCenterY(), config.markSize());
+            }
+
+            if (config.markShape() == InventoryMarksConfig.MShape.CIRCLE){
+                circleDraw(graphics, color, bounds.getCenterX(), bounds.getCenterY(), config.markSize());
+            }
         }
 
         if (config.showTagOutline()) {
