@@ -1,5 +1,6 @@
 package com.jasgnft.plugins.inventorymarks;
 
+import com.google.common.collect.ImmutableList;
 import com.google.gson.Gson;
 import com.google.inject.Provides;
 import lombok.extern.slf4j.Slf4j;
@@ -39,6 +40,15 @@ public class InventoryMarksPlugin extends Plugin
 	private static final String ITEM_KEY_PREFIX = "item_";
 	private static final String MARK_KEY_PREFIX = "mark_";
 
+	private static final String SETNAME_GROUP_1 = "Group 1";
+	private static final String SETNAME_GROUP_2 = "Group 2";
+	private static final String SETNAME_GROUP_3 = "Group 3";
+	private static final String SETNAME_GROUP_4 = "Group 4";
+	private static final String SETNAME_GROUP_5 = "Group 5";
+	private static final String SETNAME_GROUP_6 = "Group 6";
+
+	private static final List<String> GROUPS = ImmutableList.of(SETNAME_GROUP_6, SETNAME_GROUP_5, SETNAME_GROUP_4, SETNAME_GROUP_3, SETNAME_GROUP_2, SETNAME_GROUP_1);
+
 	@Inject
 	private Client client;
 
@@ -50,6 +60,9 @@ public class InventoryMarksPlugin extends Plugin
 
 	@Inject
 	private OverlayManager overlayManager;
+
+	@Inject
+	private InventoryMarksConfig config;
 
 	@Inject
 	private Gson gson;
@@ -139,6 +152,23 @@ public class InventoryMarksPlugin extends Plugin
 						.setTarget(entry.getTarget())
 						.setType(MenuAction.RUNELITE_SUBMENU);
 
+				final MenuEntry[] colorList = new MenuEntry[GROUPS.size() + 1];
+
+				for (final String groupName : GROUPS){
+					final Color color = getGroupNameColor(groupName);
+					client.createMenuEntry(idx)
+							.setOption(groupName)
+							.setType(MenuAction.RUNELITE)
+							.setParent(parent)
+							.onClick(e -> {
+								Mark m = new Mark();
+								m.color = color;
+								setMark(itemId, m);
+							});
+				}
+
+				client.setMenuEntries(colorList);
+
 				for (Color color : invColors()){
 					if (mark == null || !mark.color.equals(color)) {
 						client.createMenuEntry(idx)
@@ -193,5 +223,26 @@ public class InventoryMarksPlugin extends Plugin
 			}
 		}
 		return colors;
+	}
+
+	Color getGroupNameColor(final String name)
+	{
+		switch (name)
+		{
+			case SETNAME_GROUP_1:
+				return config.getGroup1Color();
+			case SETNAME_GROUP_2:
+				return config.getGroup2Color();
+			case SETNAME_GROUP_3:
+				return config.getGroup3Color();
+			case SETNAME_GROUP_4:
+				return config.getGroup4Color();
+			case SETNAME_GROUP_5:
+				return config.getGroup5Color();
+			case SETNAME_GROUP_6:
+				return config.getGroup6Color();
+		}
+
+		return null;
 	}
 }
